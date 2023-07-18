@@ -42,7 +42,11 @@ foreach ($hotels as $i => $hotel)
                 </select>
             </div>
 
-            <div><button class="btn btn-success mt-3">Filtra</button></div>
+            <div>
+                <button class="btn btn-success mt-3">Filtra</button>
+                <button class="btn btn-info mt-3" type="reset"><a href="index.php" class="text-decoration-none text-black">Reset</a></button>
+            </div>
+
         </form>
         <table class="table table-hover">
 
