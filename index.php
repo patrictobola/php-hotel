@@ -1,9 +1,12 @@
 <?php
 include 'includes/data/hotels.php';
 
+$vote = $_GET['vote'] ?? '';
 // Validazione, se il get non è vuoto (perché è un checkbox quindi do per scontato che ogni valore diverso da vuoto sia vero) cancello ogni array che contiene un booleano falso in 'parking'
 foreach ($hotels as $i => $hotel)
     if (!empty($_GET['parking']) && str_contains(false, $hotels[$i]['parking'])) unset($hotels[$i]);
+foreach ($hotels as $i => $hotel)
+    if ($vote > $hotels[$i]['vote']) unset($hotels[$i])
 
 ?>
 
@@ -27,6 +30,17 @@ foreach ($hotels as $i => $hotel)
         <form action="">
             <label for="parking">Parcheggio in sede</label>
             <input id="parking" name="parking" type="checkbox">
+            <div>
+                <label for="vote">Filtra in base al voto minimo</label>
+                <select name="vote" id="vote">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
 
             <div><button class="btn btn-success mt-3">Filtra</button></div>
         </form>
