@@ -16,14 +16,37 @@ include 'includes/data/hotels.php'
 </head>
 
 <body>
-    <?php foreach ($hotels as $hotel) : ?>
-        <ul>
-            <?php foreach ($hotel as $key => $info) : ?>
-                <li><?= $key ?>: <?= $info ?></li>
-            <?php endforeach ?>
+    <div class="container">
+        <h1>Hotels!!</h1>
+        <table class="table table-hover">
 
-        </ul>
-    <?php endforeach ?>
+            <thead>
+                <tr>
+                    <th scope="col">Hotel Name</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Parking</th>
+                    <th scope="col">Vote</th>
+                    <th scope="col">Distance from center</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $hotel) : ?>
+                    <tr>
+                        <?php foreach ($hotel as $info) : ?>
+                            <td><?= $info ?></td>
+                        <?php endforeach ?>
+
+                    </tr>
+                <?php endforeach ?>
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
 </body>
 
 </html>
