@@ -32,7 +32,8 @@ include 'includes/data/hotels.php';
             <tbody>
                 <?php foreach ($hotels as $hotel) :
                     if ($hotel['parking'] == true) $hotel['parking'] = '&check;';
-                    else $hotel['parking'] = '&cross;'
+                    else $hotel['parking'] = '&cross;';
+                    $hotel['distance_to_center'] .= ' km';
                 ?>
                     <tr>
                         <?php foreach ($hotel as $info) : ?>
