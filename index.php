@@ -1,5 +1,5 @@
 <?php
-include 'includes/data/hotels.php'
+include 'includes/data/hotels.php';
 ?>
 
 <!-- $hotels  -->
@@ -30,7 +30,10 @@ include 'includes/data/hotels.php'
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel) : ?>
+                <?php foreach ($hotels as $hotel) :
+                    if ($hotel['parking'] == true) $hotel['parking'] = '&check;';
+                    else $hotel['parking'] = '&cross;'
+                ?>
                     <tr>
                         <?php foreach ($hotel as $info) : ?>
                             <td><?= $info ?></td>
