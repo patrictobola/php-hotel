@@ -6,8 +6,11 @@ $vote = $_GET['vote'] ?? '';
 foreach ($hotels as $i => $hotel)
     if (!empty($_GET['parking']) && str_contains(false, $hotels[$i]['parking'])) unset($hotels[$i]);
 foreach ($hotels as $i => $hotel)
-    if ($vote > $hotels[$i]['vote']) unset($hotels[$i])
+    if ($vote > $hotels[$i]['vote']) unset($hotels[$i]);
 
+// Se all'invio del form il parcheggio è 'checkato' rimane cliccato
+$checked = '';
+if (!empty($_GET['parking'])) $checked = 'checked';
 ?>
 
 <!-- $hotels  -->
@@ -29,7 +32,7 @@ foreach ($hotels as $i => $hotel)
 
         <form action="">
             <label for="parking">Parcheggio in sede</label>
-            <input id="parking" name="parking" type="checkbox">
+            <input id="parking" name="parking" type="checkbox" <?= $checked ?>>
             <div>
                 <label for="vote">Filtra in base al voto minimo</label>
                 <select name="vote" id="vote">
