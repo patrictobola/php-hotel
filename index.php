@@ -1,3 +1,10 @@
+<?php
+include 'includes/data/hotels.php'
+?>
+
+<!-- $hotels  -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +16,14 @@
 </head>
 
 <body>
+    <?php foreach ($hotels as $hotel) : ?>
+        <ul>
+            <?php foreach ($hotel as $key => $info) : ?>
+                <li><?= $key ?>: <?= $info ?></li>
+            <?php endforeach ?>
 
+        </ul>
+    <?php endforeach ?>
 </body>
 
 </html>
