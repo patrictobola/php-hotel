@@ -1,5 +1,10 @@
 <?php
 include 'includes/data/hotels.php';
+
+// Validazione, se il get non è vuoto (perché è un checkbox quindi do per scontato che ogni valore diverso da vuoto sia vero) cancello ogni array che contiene un booleano falso in 'parking'
+foreach ($hotels as $i => $hotel)
+    if (!empty($_GET['parking']) && str_contains(false, $hotels[$i]['parking'])) unset($hotels[$i]);
+
 ?>
 
 <!-- $hotels  -->
@@ -18,6 +23,13 @@ include 'includes/data/hotels.php';
 <body>
     <div class="container">
         <h1>Hotels!!</h1>
+
+        <form action="">
+            <label for="parking">Parcheggio in sede</label>
+            <input id="parking" name="parking" type="checkbox">
+
+            <div><button class="btn btn-success mt-3">Filtra</button></div>
+        </form>
         <table class="table table-hover">
 
             <thead>
@@ -30,10 +42,13 @@ include 'includes/data/hotels.php';
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel) :
+                <?php
+
+                foreach ($hotels as $i => $hotel) :
                     if ($hotel['parking'] == true) $hotel['parking'] = '&check;';
                     else $hotel['parking'] = '&cross;';
                     $hotel['distance_to_center'] .= ' km';
+
                 ?>
                     <tr>
                         <?php foreach ($hotel as $info) : ?>
