@@ -65,11 +65,9 @@ if (!empty($_GET['parking'])) $checked = 'checked';
             <tbody>
                 <?php
 
-                foreach ($hotels as $i => $hotel) :
-                    if ($hotel['parking'] == true) $hotel['parking'] = '&check;';
-                    else $hotel['parking'] = '&cross;';
+                foreach ($hotels as $hotel) :
+                    $hotel['parking'] ? $hotel['parking'] = '&check;' : $hotel['parking'] = '&cross;';
                     $hotel['distance_to_center'] .= ' km';
-
                 ?>
                     <tr>
                         <?php foreach ($hotel as $info) : ?>
